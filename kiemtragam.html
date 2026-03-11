@@ -4,379 +4,416 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>PHIẾU KIỂM TRA GẦM</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
+<title>Phiếu Kiểm Tra Gầm Xe</title>
 
 <style>
 
 body{
-font-family:Segoe UI;
-background:#f3f4f6;
+font-family:Arial;
+background:#f2f2f2;
 padding:20px;
 }
 
-/* khung phiếu */
-
-.page{
-width:210mm;
-min-height:297mm;
-background:white;
-padding:20px;
+.container{
+max-width:1100px;
 margin:auto;
+background:white;
+padding:30px;
+border:1px solid #ccc;
 }
 
-/* bảng */
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.section{
+background:#0f3d73;
+color:white;
+padding:6px;
+font-weight:bold;
+margin-top:20px;
+}
 
 table{
 width:100%;
 border-collapse:collapse;
+margin-top:10px;
 }
 
 th,td{
-border:1px solid #333;
+border:1px solid #444;
 padding:6px;
 font-size:14px;
 }
 
 th{
-background:#fde047;
+background:#f3d46b;
+}
+
+.ok{
+background:#22c55e;
+color:white;
+}
+
+.watch{
+background:#facc15;
+}
+
+.fix{
+background:#ef4444;
+color:white;
+}
+
+.center{
 text-align:center;
 }
 
-/* trạng thái */
-
-.ok:checked{
-accent-color:#22c55e;
-}
-
-.watch:checked{
-accent-color:#facc15;
-}
-
-.fix:checked{
-accent-color:#ef4444;
-}
-
-/* input */
-
 textarea{
 width:100%;
+height:28px;
 border:1px solid #ccc;
-border-radius:4px;
-padding:3px;
 }
 
-input{
-border:1px solid #ccc;
-padding:4px;
-border-radius:4px;
+.status-ok{background:#dcfce7;}
+.status-watch{background:#fef9c3;}
+.status-fix{background:#fee2e2;}
+
+.info input{
+border:none;
+border-bottom:1px dotted black;
+width:200px;
 }
 
-/* nút */
+.toolbar{
+margin-bottom:20px;
+}
 
-.btn{
-padding:8px 16px;
+button{
+padding:8px 14px;
+border:none;
 border-radius:6px;
-color:white;
+cursor:pointer;
 }
 
 .print{
 background:#2563eb;
-}
-
-.submit{
-background:#16a34a;
-}
-
-/* in A4 */
-
-@media print{
-
-body{
-background:white;
-padding:0;
-}
-
-button{
-display:none;
-}
-
-.page{
-box-shadow:none;
-}
-
+color:white;
 }
 
 </style>
 
+
+<script>
+
+function setStatus(row,status){
+
+let tr=document.getElementById(row)
+
+tr.classList.remove("status-ok","status-watch","status-fix")
+
+if(status==="ok"){tr.classList.add("status-ok")}
+if(status==="watch"){tr.classList.add("status-watch")}
+if(status==="fix"){tr.classList.add("status-fix")}
+
+}
+
+</script>
+
 </head>
+
 
 
 <body>
 
-<div class="page shadow-lg">
+<div class="container">
 
-<!-- HEADER -->
-
-<div class="flex justify-between items-center mb-4">
-
-<img src="https://trolyoto.github.io/phieukiemtra/logophilong.jpg" style="height:70px">
-
-<h1 class="text-2xl font-bold">
-PHIẾU KIỂM TRA GẦM XE
-</h1>
-
+<div class="toolbar">
+<button class="print" onclick="window.print()">🖨 In Phiếu</button>
 </div>
 
 
-<!-- THÔNG TIN XE -->
+<h1>PHIẾU KIỂM TRA GẦM XE</h1>
 
-<h2 class="font-bold mb-2">I. THÔNG TIN XE</h2>
 
-<div class="grid grid-cols-4 gap-2 mb-4">
+<div class="info">
 
-<input placeholder="Biển số">
+Biển số:
+<input>
 
-<input placeholder="Hãng xe">
+Hãng xe:
+<input>
 
-<input placeholder="Năm sản xuất">
+Năm sản xuất:
+<input>
 
-<input placeholder="Km hiện tại">
+Km hiện tại:
+<input>
 
+Ngày kiểm tra:
 <input type="date">
 
-<input placeholder="Kỹ thuật viên">
-
 </div>
 
-
-<!-- BẢNG KIỂM TRA -->
-
-<h2 class="font-bold mb-2">II. KIỂM TRA GẦM</h2>
 
 <table>
 
 <tr>
-
 <th>Hạng mục</th>
-<th class="bg-green-500 text-white">Bình thường</th>
-<th class="bg-yellow-400">Theo dõi</th>
-<th class="bg-red-500 text-white">Cần sửa</th>
+<th class="ok">Bình thường</th>
+<th class="watch">Theo dõi</th>
+<th class="fix">Cần sửa</th>
 <th>Ghi chú</th>
-
 </tr>
 
-<tr>
-<td>Giảm xóc trước</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
+</table>
+
+
+
+<div class="section">I. HỆ THỐNG TREO</div>
+
+<table>
+
+<tr id="1">
+<td>1. Giảm xóc trước</td>
+<td class="center"><input type="radio" name="1" onclick="setStatus('1','ok')"></td>
+<td class="center"><input type="radio" name="1" onclick="setStatus('1','watch')"></td>
+<td class="center"><input type="radio" name="1" onclick="setStatus('1','fix')"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr>
-<td>Giảm xóc sau</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
+<tr id="2">
+<td>2. Giảm xóc sau</td>
+<td class="center"><input type="radio" name="2" onclick="setStatus('2','ok')"></td>
+<td class="center"><input type="radio" name="2" onclick="setStatus('2','watch')"></td>
+<td class="center"><input type="radio" name="2" onclick="setStatus('2','fix')"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr>
-<td>Bát bèo giảm xóc</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
+<tr id="3">
+<td>3. Bát bèo / cao su chân giảm xóc</td>
+<td class="center"><input type="radio" name="3" onclick="setStatus('3','ok')"></td>
+<td class="center"><input type="radio" name="3" onclick="setStatus('3','watch')"></td>
+<td class="center"><input type="radio" name="3" onclick="setStatus('3','fix')"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr>
-<td>Lò xo</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Rotuyn lái trong</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Rotuyn lái ngoài</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Rotuyn trụ đứng</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Rotuyn càng A</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Càng A trên</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Càng A dưới</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Cao su càng A</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Rotuyn cân bằng</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Cao su thanh cân bằng</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Thanh cân bằng</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Thước lái</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Khớp trục lái</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Đầu láp trong</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Đầu láp ngoài</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Chụp bụi láp</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Chốt trượt phanh</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Đĩa phanh</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>Bu lông – ốc gầm</td>
-<td><input type="checkbox" class="ok"></td>
-<td><input type="checkbox" class="watch"></td>
-<td><input type="checkbox" class="fix"></td>
+<tr id="4">
+<td>4. Lò xo / thanh xoắn</td>
+<td class="center"><input type="radio" name="4" onclick="setStatus('4','ok')"></td>
+<td class="center"><input type="radio" name="4" onclick="setStatus('4','watch')"></td>
+<td class="center"><input type="radio" name="4" onclick="setStatus('4','fix')"></td>
 <td><textarea></textarea></td>
 </tr>
 
 </table>
 
 
-<!-- NÚT -->
 
-<div class="mt-6 flex gap-3">
+<div class="section">II. ROTUYN & KHỚP NỐI</div>
 
-<button onclick="window.print()" class="btn print">
-Xuất PDF / In phiếu
-</button>
+<table>
 
-<button class="btn submit">
-Gửi Google Sheet
-</button>
+<tr id="5">
+<td>5. Rotuyn lái trong</td>
+<td class="center"><input type="radio" name="5" onclick="setStatus('5','ok')"></td>
+<td class="center"><input type="radio" name="5" onclick="setStatus('5','watch')"></td>
+<td class="center"><input type="radio" name="5" onclick="setStatus('5','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
 
-</div>
+<tr id="6">
+<td>6. Rotuyn trụ đứng</td>
+<td class="center"><input type="radio" name="6" onclick="setStatus('6','ok')"></td>
+<td class="center"><input type="radio" name="6" onclick="setStatus('6','watch')"></td>
+<td class="center"><input type="radio" name="6" onclick="setStatus('6','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="7">
+<td>7. Rotuyn càng A</td>
+<td class="center"><input type="radio" name="7" onclick="setStatus('7','ok')"></td>
+<td class="center"><input type="radio" name="7" onclick="setStatus('7','watch')"></td>
+<td class="center"><input type="radio" name="7" onclick="setStatus('7','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
 
 
-<!-- FOOTER -->
 
-<div class="text-center mt-8 text-sm">
+<div class="section">III. CÀNG A & CAO SU GẦM</div>
 
-<b>PHI LONG AUTO</b>  
-Nâng tầm trải nghiệm lái – An toàn trọn hành trình  
+<table>
 
-www.philongauto.com  
-0975 76 7777 - 0975 76 7778
+<tr id="8"><td>8. Càng A trên</td>
+<td class="center"><input type="radio" name="8" onclick="setStatus('8','ok')"></td>
+<td class="center"><input type="radio" name="8" onclick="setStatus('8','watch')"></td>
+<td class="center"><input type="radio" name="8" onclick="setStatus('8','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
 
-</div>
+<tr id="9"><td>9. Càng A dưới</td>
+<td class="center"><input type="radio" name="9" onclick="setStatus('9','ok')"></td>
+<td class="center"><input type="radio" name="9" onclick="setStatus('9','watch')"></td>
+<td class="center"><input type="radio" name="9" onclick="setStatus('9','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="10"><td>10. Cao su càng A</td>
+<td class="center"><input type="radio" name="10" onclick="setStatus('10','ok')"></td>
+<td class="center"><input type="radio" name="10" onclick="setStatus('10','watch')"></td>
+<td class="center"><input type="radio" name="10" onclick="setStatus('10','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">IV. THANH CÂN BẰNG</div>
+
+<table>
+
+<tr id="11"><td>11. Rotuyn cân bằng</td>
+<td class="center"><input type="radio" name="11" onclick="setStatus('11','ok')"></td>
+<td class="center"><input type="radio" name="11" onclick="setStatus('11','watch')"></td>
+<td class="center"><input type="radio" name="11" onclick="setStatus('11','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="12"><td>12. Cao su thanh cân bằng</td>
+<td class="center"><input type="radio" name="12" onclick="setStatus('12','ok')"></td>
+<td class="center"><input type="radio" name="12" onclick="setStatus('12','watch')"></td>
+<td class="center"><input type="radio" name="12" onclick="setStatus('12','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="13"><td>13. Thanh cân bằng</td>
+<td class="center"><input type="radio" name="13" onclick="setStatus('13','ok')"></td>
+<td class="center"><input type="radio" name="13" onclick="setStatus('13','watch')"></td>
+<td class="center"><input type="radio" name="13" onclick="setStatus('13','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">V. HỆ THỐNG LÁI</div>
+
+<table>
+
+<tr id="14"><td>14. Thước lái</td>
+<td class="center"><input type="radio" name="14" onclick="setStatus('14','ok')"></td>
+<td class="center"><input type="radio" name="14" onclick="setStatus('14','watch')"></td>
+<td class="center"><input type="radio" name="14" onclick="setStatus('14','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="15"><td>15. Khớp trục lái</td>
+<td class="center"><input type="radio" name="15" onclick="setStatus('15','ok')"></td>
+<td class="center"><input type="radio" name="15" onclick="setStatus('15','watch')"></td>
+<td class="center"><input type="radio" name="15" onclick="setStatus('15','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="16"><td>16. Đường ống dầu lái</td>
+<td class="center"><input type="radio" name="16" onclick="setStatus('16','ok')"></td>
+<td class="center"><input type="radio" name="16" onclick="setStatus('16','watch')"></td>
+<td class="center"><input type="radio" name="16" onclick="setStatus('16','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">VI. HỆ THỐNG TRUYỀN ĐỘNG</div>
+
+<table>
+
+<tr id="17"><td>17. Láp truyền động</td>
+<td class="center"><input type="radio" name="17" onclick="setStatus('17','ok')"></td>
+<td class="center"><input type="radio" name="17" onclick="setStatus('17','watch')"></td>
+<td class="center"><input type="radio" name="17" onclick="setStatus('17','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="18"><td>18. Các đăng láp</td>
+<td class="center"><input type="radio" name="18" onclick="setStatus('18','ok')"></td>
+<td class="center"><input type="radio" name="18" onclick="setStatus('18','watch')"></td>
+<td class="center"><input type="radio" name="18" onclick="setStatus('18','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="19"><td>19. Chụp bụi láp</td>
+<td class="center"><input type="radio" name="19" onclick="setStatus('19','ok')"></td>
+<td class="center"><input type="radio" name="19" onclick="setStatus('19','watch')"></td>
+<td class="center"><input type="radio" name="19" onclick="setStatus('19','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">VII. HỆ THỐNG PHANH & KHUNG GẦM</div>
+
+<table>
+
+<tr id="20"><td>20. Đường ống dầu phanh</td>
+<td class="center"><input type="radio" name="20" onclick="setStatus('20','ok')"></td>
+<td class="center"><input type="radio" name="20" onclick="setStatus('20','watch')"></td>
+<td class="center"><input type="radio" name="20" onclick="setStatus('20','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="21"><td>21. Heo thắng</td>
+<td class="center"><input type="radio" name="21" onclick="setStatus('21','ok')"></td>
+<td class="center"><input type="radio" name="21" onclick="setStatus('21','watch')"></td>
+<td class="center"><input type="radio" name="21" onclick="setStatus('21','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="22"><td>22. Đĩa phanh</td>
+<td class="center"><input type="radio" name="22" onclick="setStatus('22','ok')"></td>
+<td class="center"><input type="radio" name="22" onclick="setStatus('22','watch')"></td>
+<td class="center"><input type="radio" name="22" onclick="setStatus('22','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="23"><td>23. Má phanh</td>
+<td class="center"><input type="radio" name="23" onclick="setStatus('23','ok')"></td>
+<td class="center"><input type="radio" name="23" onclick="setStatus('23','watch')"></td>
+<td class="center"><input type="radio" name="23" onclick="setStatus('23','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="24"><td>24. Ắc thắng & cao su</td>
+<td class="center"><input type="radio" name="24" onclick="setStatus('24','ok')"></td>
+<td class="center"><input type="radio" name="24" onclick="setStatus('24','watch')"></td>
+<td class="center"><input type="radio" name="24" onclick="setStatus('24','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="25"><td>25. Dây cáp phanh tay</td>
+<td class="center"><input type="radio" name="25" onclick="setStatus('25','ok')"></td>
+<td class="center"><input type="radio" name="25" onclick="setStatus('25','watch')"></td>
+<td class="center"><input type="radio" name="25" onclick="setStatus('25','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr id="26"><td>26. Bu lông – ốc gầm</td>
+<td class="center"><input type="radio" name="26" onclick="setStatus('26','ok')"></td>
+<td class="center"><input type="radio" name="26" onclick="setStatus('26','watch')"></td>
+<td class="center"><input type="radio" name="26" onclick="setStatus('26','fix')"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
 
 </div>
 
 </body>
-
 </html>
