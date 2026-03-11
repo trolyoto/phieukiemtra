@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
 <meta charset="UTF-8">
+
 <title>PHIẾU KIỂM TRA GẦM XE</title>
 
 <style>
 
+/* ===== A4 ===== */
+
+@page{
+size:A4;
+margin:15mm;
+}
+
 body{
-font-family:Arial;
-background:#f2f2f2;
-padding:20px;
+font-family: "Segoe UI", Arial;
+background:#e9e9e9;
 }
 
 .container{
-width:1050px;
-margin:auto;
+width:210mm;
+min-height:297mm;
 background:white;
-padding:25px;
-border:1px solid #ccc;
+margin:auto;
+padding:20px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 /* HEADER */
@@ -35,22 +44,24 @@ height:60px;
 
 .title{
 text-align:center;
-font-size:26px;
-font-weight:bold;
-margin:10px 0;
+font-size:24px;
+font-weight:700;
+margin-top:10px;
+letter-spacing:1px;
 }
 
 /* INFO */
 
 .info{
 margin-top:10px;
-margin-bottom:10px;
+font-size:14px;
 }
 
 .info input{
 border:none;
 border-bottom:1px dotted black;
-width:180px;
+width:160px;
+margin-right:15px;
 }
 
 /* TABLE */
@@ -63,7 +74,7 @@ margin-top:10px;
 
 th,td{
 border:1px solid #444;
-padding:6px;
+padding:7px;
 font-size:14px;
 }
 
@@ -71,57 +82,47 @@ th{
 text-align:center;
 }
 
-.center{
-text-align:center;
-}
+/* HEADER COLORS */
 
-/* STATUS */
-
-.ok{
-background:#22c55e;
+.head-green{
+background:#28a745;
 color:white;
-font-weight:bold;
+font-weight:600;
 }
 
-.watch{
-background:#facc15;
-font-weight:bold;
+.head-yellow{
+background:#f2c94c;
+font-weight:600;
 }
 
-.fix{
-background:#ef4444;
+.head-red{
+background:#e74c3c;
 color:white;
-font-weight:bold;
+font-weight:600;
 }
 
 /* SECTION */
 
 .section{
-background:#0f3d73;
+background:#1f497d;
 color:white;
-font-weight:bold;
 padding:6px;
-margin-top:18px;
+margin-top:15px;
+font-weight:600;
 }
 
-/* TEXT AREA */
+/* CHECKBOX */
+
+input[type=radio]{
+transform:scale(1.2);
+}
+
+/* TEXTAREA */
 
 textarea{
 width:100%;
-height:55px;
-border:1px dashed #555;
-}
-
-/* BUTTON */
-
-.print{
-background:#2563eb;
-color:white;
-padding:8px 16px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-bottom:10px;
+height:45px;
+border:1px dashed #888;
 }
 
 /* SIGNATURE */
@@ -129,18 +130,30 @@ margin-bottom:10px;
 .signature{
 display:flex;
 justify-content:space-between;
-margin-top:40px;
+margin-top:50px;
 }
 
 .sign-box{
-width:45%;
+width:40%;
 text-align:center;
 }
 
 .sign-line{
-margin-top:60px;
+margin-top:70px;
 border-top:1px solid black;
 padding-top:5px;
+}
+
+/* PRINT */
+
+.print{
+background:#2c7be5;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:10px;
 }
 
 @media print{
@@ -154,7 +167,7 @@ background:white;
 }
 
 .container{
-border:none;
+box-shadow:none;
 }
 
 }
@@ -163,8 +176,6 @@ border:none;
 
 </head>
 
-
-
 <body>
 
 <div class="container">
@@ -172,275 +183,274 @@ border:none;
 <button class="print" onclick="window.print()">🖨 In Phiếu</button>
 
 
-<div class="header">
-
-<img src="logo.png" class="logo">
-
-</div>
-
 <div class="title">
-PHIẾU KIỂM TRA GẦM XE
-</div>
 
+PHIẾU KIỂM TRA GẦM XE
+
+</div>
 
 
 <div class="info">
 
-Biển số:
-<input>
+Biển số: <input>
 
-&nbsp;&nbsp;
+Hãng xe: <input>
 
-Hãng xe:
-<input>
-
-&nbsp;&nbsp;
-
-Năm sản xuất:
-<input>
+Năm SX: <input>
 
 <br><br>
 
-KM hiện tại:
-<input>
+KM hiện tại: <input>
 
-&nbsp;&nbsp;
-
-Ngày kiểm tra:
-<input type="date">
+Ngày kiểm tra: <input type="date">
 
 </div>
 
 
-
 <table>
 
 <tr>
-<th style="width:40%">Hạng mục</th>
-<th class="ok">Bình thường</th>
-<th class="watch">Theo dõi</th>
-<th class="fix">Cần sửa</th>
-<th style="width:30%">Ghi chú</th>
+
+<th style="width:40%">Hạng mục kiểm tra</th>
+
+<th class="head-green">Bình thường</th>
+
+<th class="head-yellow">Theo dõi</th>
+
+<th class="head-red">Cần sửa</th>
+
+<th style="width:35%">Ghi chú</th>
+
 </tr>
 
 </table>
 
 
+<div class="section">
 
-<div class="section">YÊU CẦU KHÁCH HÀNG</div>
+I. HỆ THỐNG TREO
 
-<textarea placeholder="Mô tả các vấn đề khách hàng yêu cầu kiểm tra"></textarea>
+</div>
 
-
-
-<div class="section">CHẨN ĐOÁN BAN ĐẦU</div>
-
-<textarea placeholder="Mô tả chẩn đoán ban đầu của kỹ thuật viên"></textarea>
-
-
-
-<div class="section">I. HỆ THỐNG TREO</div>
 
 <table>
 
 <tr>
+
 <td>1. Giảm xóc trước</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="1"></td>
+
+<td align="center"><input type="radio" name="1"></td>
+
+<td align="center"><input type="radio" name="1"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>2. Giảm xóc sau</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="2"></td>
+
+<td align="center"><input type="radio" name="2"></td>
+
+<td align="center"><input type="radio" name="2"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>3. Bát bèo / cao su chân giảm xóc</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="3"></td>
+
+<td align="center"><input type="radio" name="3"></td>
+
+<td align="center"><input type="radio" name="3"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>4. Lò xo / thanh xoắn</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="4"></td>
+
+<td align="center"><input type="radio" name="4"></td>
+
+<td align="center"><input type="radio" name="4"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 </table>
 
 
+<div class="section">
 
-<div class="section">II. ROTUYN & KHỚP NỐI</div>
+II. ROTUYN & KHỚP NỐI
+
+</div>
+
 
 <table>
 
 <tr>
+
 <td>5. Rotuyn lái trong</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="5"></td>
+
+<td align="center"><input type="radio" name="5"></td>
+
+<td align="center"><input type="radio" name="5"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>6. Rotuyn lái ngoài</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="6"></td>
+
+<td align="center"><input type="radio" name="6"></td>
+
+<td align="center"><input type="radio" name="6"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>7. Rotuyn trụ đứng</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="7"></td>
+
+<td align="center"><input type="radio" name="7"></td>
+
+<td align="center"><input type="radio" name="7"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 </table>
 
 
+<div class="section">
 
-<div class="section">III. CÀNG A</div>
+III. CÀNG A
+
+</div>
+
 
 <table>
 
 <tr>
+
 <td>8. Càng A trên</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="8"></td>
+
+<td align="center"><input type="radio" name="8"></td>
+
+<td align="center"><input type="radio" name="8"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>9. Càng A dưới</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="9"></td>
+
+<td align="center"><input type="radio" name="9"></td>
+
+<td align="center"><input type="radio" name="9"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
+
 <td>10. Cao su càng A</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="10"></td>
+
+<td align="center"><input type="radio" name="10"></td>
+
+<td align="center"><input type="radio" name="10"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 </table>
 
 
+<div class="section">
 
-<div class="section">IV. THANH CÂN BẰNG</div>
+IV. THANH CÂN BẰNG
+
+</div>
+
 
 <table>
 
 <tr>
+
 <td>11. Rotuyn cân bằng</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td align="center"><input type="radio" name="11"></td>
+
+<td align="center"><input type="radio" name="11"></td>
+
+<td align="center"><input type="radio" name="11"></td>
+
 <td><textarea></textarea></td>
+
 </tr>
 
 <tr>
-<td>12. Thanh cân bằng</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td>12. Cao su thanh cân bằng</td>
+
+<td align="center"><input type="radio" name="12"></td>
+
+<td align="center"><input type="radio" name="12"></td>
+
+<td align="center"><input type="radio" name="12"></td>
+
 <td><textarea></textarea></td>
-</tr>
 
-</table>
-
-
-
-<div class="section">V. HỆ THỐNG LÁI</div>
-
-<table>
-
-<tr>
-<td>13. Thước lái</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
 </tr>
 
 <tr>
-<td>14. Trợ lực lái</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
+
+<td>13. Thanh cân bằng</td>
+
+<td align="center"><input type="radio" name="13"></td>
+
+<td align="center"><input type="radio" name="13"></td>
+
+<td align="center"><input type="radio" name="13"></td>
+
 <td><textarea></textarea></td>
-</tr>
 
-</table>
-
-
-
-<div class="section">VI. TRUYỀN ĐỘNG</div>
-
-<table>
-
-<tr>
-<td>15. Đầu láp</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>16. Cao su láp</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
-</tr>
-
-</table>
-
-
-
-<div class="section">VII. PHANH & KHUNG GẦM</div>
-
-<table>
-
-<tr>
-<td>17. Đĩa phanh</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>18. Má phanh</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr>
-<td>19. Bu lông – ốc gầm</td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td class="center"><input type="checkbox"></td>
-<td><textarea></textarea></td>
 </tr>
 
 </table>
@@ -453,15 +463,24 @@ Ngày kiểm tra:
 
 <b>Kỹ thuật viên</b>
 
-<div class="sign-line">Ký và ghi rõ họ tên</div>
+<div class="sign-line">
+
+Ký và ghi rõ họ tên
 
 </div>
+
+</div>
+
 
 <div class="sign-box">
 
 <b>Khách hàng xác nhận</b>
 
-<div class="sign-line">Ký và ghi rõ họ tên</div>
+<div class="sign-line">
+
+Ký và ghi rõ họ tên
+
+</div>
 
 </div>
 
@@ -471,4 +490,5 @@ Ngày kiểm tra:
 </div>
 
 </body>
+
 </html>
