@@ -4,36 +4,58 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Phiếu Kiểm Tra Gầm Xe</title>
+<title>PHIẾU KIỂM TRA GẦM XE</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:#f2f2f2;
+background:#f3f3f3;
 padding:20px;
 }
 
 .container{
-max-width:1100px;
+width:1050px;
 margin:auto;
 background:white;
-padding:30px;
+padding:25px;
 border:1px solid #ccc;
 }
 
-h1{
-text-align:center;
-margin-bottom:20px;
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
 }
 
-.section{
-background:#0f3d73;
-color:white;
-padding:6px;
-font-weight:bold;
-margin-top:20px;
+.logo{
+height:60px;
 }
+
+.title{
+font-size:26px;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+}
+
+/* INFO */
+
+.info{
+margin-top:10px;
+margin-bottom:10px;
+}
+
+.info input{
+border:none;
+border-bottom:1px dotted black;
+width:180px;
+}
+
+/* TABLE */
 
 table{
 width:100%;
@@ -51,6 +73,12 @@ th{
 background:#f3d46b;
 }
 
+.center{
+text-align:center;
+}
+
+/* STATUS COLORS */
+
 .ok{
 background:#22c55e;
 color:white;
@@ -65,43 +93,50 @@ background:#ef4444;
 color:white;
 }
 
-.center{
-text-align:center;
+.status-ok{
+background:#dcfce7;
 }
+
+.status-watch{
+background:#fef9c3;
+}
+
+.status-fix{
+background:#fee2e2;
+}
+
+/* SECTION */
+
+.section{
+background:#0f3d73;
+color:white;
+font-weight:bold;
+padding:6px;
+margin-top:15px;
+}
+
+/* TEXT AREA */
 
 textarea{
 width:100%;
-height:28px;
-border:1px solid #ccc;
+height:60px;
+border:1px dashed #555;
 }
 
-.status-ok{background:#dcfce7;}
-.status-watch{background:#fef9c3;}
-.status-fix{background:#fee2e2;}
-
-.info input{
-border:none;
-border-bottom:1px dotted black;
-width:200px;
-}
-
-.toolbar{
-margin-bottom:20px;
-}
-
-button{
-padding:8px 14px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
+/* BUTTON */
 
 .print{
 background:#2563eb;
 color:white;
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:10px;
 }
 
 </style>
+
 
 
 <script>
@@ -112,9 +147,9 @@ let tr=document.getElementById(row)
 
 tr.classList.remove("status-ok","status-watch","status-fix")
 
-if(status==="ok"){tr.classList.add("status-ok")}
-if(status==="watch"){tr.classList.add("status-watch")}
-if(status==="fix"){tr.classList.add("status-fix")}
+if(status==="ok") tr.classList.add("status-ok")
+if(status==="watch") tr.classList.add("status-watch")
+if(status==="fix") tr.classList.add("status-fix")
 
 }
 
@@ -128,32 +163,37 @@ if(status==="fix"){tr.classList.add("status-fix")}
 
 <div class="container">
 
-<div class="toolbar">
 <button class="print" onclick="window.print()">🖨 In Phiếu</button>
+
+<div class="header">
+
+<img src="logo.png" class="logo">
+
+<div class="title">
+PHIẾU KIỂM TRA GẦM XE
 </div>
 
-
-<h1>PHIẾU KIỂM TRA GẦM XE</h1>
+</div>
 
 
 <div class="info">
 
-Biển số:
-<input>
+Biển số: <input>
+&nbsp;&nbsp;
 
-Hãng xe:
-<input>
+Hãng xe: <input>
+&nbsp;&nbsp;
 
-Năm sản xuất:
-<input>
+Năm sản xuất: <input>
+<br><br>
 
-Km hiện tại:
-<input>
+KM hiện tại: <input>
+&nbsp;&nbsp;
 
-Ngày kiểm tra:
-<input type="date">
+Ngày kiểm tra: <input type="date">
 
 </div>
+
 
 
 <table>
@@ -167,6 +207,20 @@ Ngày kiểm tra:
 </tr>
 
 </table>
+
+
+
+<div class="section">YÊU CẦU KHÁCH HÀNG & CHẨN ĐOÁN BAN ĐẦU</div>
+
+<b>Yêu cầu của khách hàng:</b>
+
+<textarea placeholder="Mô tả các vấn đề hoặc dịch vụ khách hàng yêu cầu"></textarea>
+
+<br><br>
+
+<b>Chẩn đoán ban đầu:</b>
+
+<textarea placeholder="Mô tả chẩn đoán ban đầu của kỹ thuật viên"></textarea>
 
 
 
@@ -269,151 +323,8 @@ Ngày kiểm tra:
 
 </table>
 
-
-
-<div class="section">IV. THANH CÂN BẰNG</div>
-
-<table>
-
-<tr id="11"><td>11. Rotuyn cân bằng</td>
-<td class="center"><input type="radio" name="11" onclick="setStatus('11','ok')"></td>
-<td class="center"><input type="radio" name="11" onclick="setStatus('11','watch')"></td>
-<td class="center"><input type="radio" name="11" onclick="setStatus('11','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="12"><td>12. Cao su thanh cân bằng</td>
-<td class="center"><input type="radio" name="12" onclick="setStatus('12','ok')"></td>
-<td class="center"><input type="radio" name="12" onclick="setStatus('12','watch')"></td>
-<td class="center"><input type="radio" name="12" onclick="setStatus('12','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="13"><td>13. Thanh cân bằng</td>
-<td class="center"><input type="radio" name="13" onclick="setStatus('13','ok')"></td>
-<td class="center"><input type="radio" name="13" onclick="setStatus('13','watch')"></td>
-<td class="center"><input type="radio" name="13" onclick="setStatus('13','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-</table>
-
-
-
-<div class="section">V. HỆ THỐNG LÁI</div>
-
-<table>
-
-<tr id="14"><td>14. Thước lái</td>
-<td class="center"><input type="radio" name="14" onclick="setStatus('14','ok')"></td>
-<td class="center"><input type="radio" name="14" onclick="setStatus('14','watch')"></td>
-<td class="center"><input type="radio" name="14" onclick="setStatus('14','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="15"><td>15. Khớp trục lái</td>
-<td class="center"><input type="radio" name="15" onclick="setStatus('15','ok')"></td>
-<td class="center"><input type="radio" name="15" onclick="setStatus('15','watch')"></td>
-<td class="center"><input type="radio" name="15" onclick="setStatus('15','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="16"><td>16. Đường ống dầu lái</td>
-<td class="center"><input type="radio" name="16" onclick="setStatus('16','ok')"></td>
-<td class="center"><input type="radio" name="16" onclick="setStatus('16','watch')"></td>
-<td class="center"><input type="radio" name="16" onclick="setStatus('16','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-</table>
-
-
-
-<div class="section">VI. HỆ THỐNG TRUYỀN ĐỘNG</div>
-
-<table>
-
-<tr id="17"><td>17. Láp truyền động</td>
-<td class="center"><input type="radio" name="17" onclick="setStatus('17','ok')"></td>
-<td class="center"><input type="radio" name="17" onclick="setStatus('17','watch')"></td>
-<td class="center"><input type="radio" name="17" onclick="setStatus('17','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="18"><td>18. Các đăng láp</td>
-<td class="center"><input type="radio" name="18" onclick="setStatus('18','ok')"></td>
-<td class="center"><input type="radio" name="18" onclick="setStatus('18','watch')"></td>
-<td class="center"><input type="radio" name="18" onclick="setStatus('18','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="19"><td>19. Chụp bụi láp</td>
-<td class="center"><input type="radio" name="19" onclick="setStatus('19','ok')"></td>
-<td class="center"><input type="radio" name="19" onclick="setStatus('19','watch')"></td>
-<td class="center"><input type="radio" name="19" onclick="setStatus('19','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-</table>
-
-
-
-<div class="section">VII. HỆ THỐNG PHANH & KHUNG GẦM</div>
-
-<table>
-
-<tr id="20"><td>20. Đường ống dầu phanh</td>
-<td class="center"><input type="radio" name="20" onclick="setStatus('20','ok')"></td>
-<td class="center"><input type="radio" name="20" onclick="setStatus('20','watch')"></td>
-<td class="center"><input type="radio" name="20" onclick="setStatus('20','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="21"><td>21. Heo thắng</td>
-<td class="center"><input type="radio" name="21" onclick="setStatus('21','ok')"></td>
-<td class="center"><input type="radio" name="21" onclick="setStatus('21','watch')"></td>
-<td class="center"><input type="radio" name="21" onclick="setStatus('21','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="22"><td>22. Đĩa phanh</td>
-<td class="center"><input type="radio" name="22" onclick="setStatus('22','ok')"></td>
-<td class="center"><input type="radio" name="22" onclick="setStatus('22','watch')"></td>
-<td class="center"><input type="radio" name="22" onclick="setStatus('22','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="23"><td>23. Má phanh</td>
-<td class="center"><input type="radio" name="23" onclick="setStatus('23','ok')"></td>
-<td class="center"><input type="radio" name="23" onclick="setStatus('23','watch')"></td>
-<td class="center"><input type="radio" name="23" onclick="setStatus('23','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="24"><td>24. Ắc thắng & cao su</td>
-<td class="center"><input type="radio" name="24" onclick="setStatus('24','ok')"></td>
-<td class="center"><input type="radio" name="24" onclick="setStatus('24','watch')"></td>
-<td class="center"><input type="radio" name="24" onclick="setStatus('24','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="25"><td>25. Dây cáp phanh tay</td>
-<td class="center"><input type="radio" name="25" onclick="setStatus('25','ok')"></td>
-<td class="center"><input type="radio" name="25" onclick="setStatus('25','watch')"></td>
-<td class="center"><input type="radio" name="25" onclick="setStatus('25','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-<tr id="26"><td>26. Bu lông – ốc gầm</td>
-<td class="center"><input type="radio" name="26" onclick="setStatus('26','ok')"></td>
-<td class="center"><input type="radio" name="26" onclick="setStatus('26','watch')"></td>
-<td class="center"><input type="radio" name="26" onclick="setStatus('26','fix')"></td>
-<td><textarea></textarea></td>
-</tr>
-
-</table>
-
 </div>
 
 </body>
+
 </html>
