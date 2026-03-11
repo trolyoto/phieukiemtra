@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,7 +9,7 @@
 
 body{
 font-family:Arial;
-background:#f3f3f3;
+background:#f2f2f2;
 padding:20px;
 }
 
@@ -28,7 +27,6 @@ border:1px solid #ccc;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:10px;
 }
 
 .logo{
@@ -36,10 +34,10 @@ height:60px;
 }
 
 .title{
+text-align:center;
 font-size:26px;
 font-weight:bold;
-text-align:center;
-margin-top:10px;
+margin:10px 0;
 }
 
 /* INFO */
@@ -70,39 +68,30 @@ font-size:14px;
 }
 
 th{
-background:#f3d46b;
+text-align:center;
 }
 
 .center{
 text-align:center;
 }
 
-/* STATUS COLORS */
+/* STATUS */
 
 .ok{
 background:#22c55e;
 color:white;
+font-weight:bold;
 }
 
 .watch{
 background:#facc15;
+font-weight:bold;
 }
 
 .fix{
 background:#ef4444;
 color:white;
-}
-
-.status-ok{
-background:#dcfce7;
-}
-
-.status-watch{
-background:#fef9c3;
-}
-
-.status-fix{
-background:#fee2e2;
+font-weight:bold;
 }
 
 /* SECTION */
@@ -112,14 +101,14 @@ background:#0f3d73;
 color:white;
 font-weight:bold;
 padding:6px;
-margin-top:15px;
+margin-top:18px;
 }
 
 /* TEXT AREA */
 
 textarea{
 width:100%;
-height:60px;
+height:55px;
 border:1px dashed #555;
 }
 
@@ -128,32 +117,49 @@ border:1px dashed #555;
 .print{
 background:#2563eb;
 color:white;
-padding:8px 14px;
+padding:8px 16px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 margin-bottom:10px;
 }
 
-</style>
+/* SIGNATURE */
 
+.signature{
+display:flex;
+justify-content:space-between;
+margin-top:40px;
+}
 
+.sign-box{
+width:45%;
+text-align:center;
+}
 
-<script>
+.sign-line{
+margin-top:60px;
+border-top:1px solid black;
+padding-top:5px;
+}
 
-function setStatus(row,status){
+@media print{
 
-let tr=document.getElementById(row)
+.print{
+display:none;
+}
 
-tr.classList.remove("status-ok","status-watch","status-fix")
+body{
+background:white;
+}
 
-if(status==="ok") tr.classList.add("status-ok")
-if(status==="watch") tr.classList.add("status-watch")
-if(status==="fix") tr.classList.add("status-fix")
+.container{
+border:none;
+}
 
 }
 
-</script>
+</style>
 
 </head>
 
@@ -165,32 +171,43 @@ if(status==="fix") tr.classList.add("status-fix")
 
 <button class="print" onclick="window.print()">🖨 In Phiếu</button>
 
+
 <div class="header">
 
 <img src="logo.png" class="logo">
+
+</div>
 
 <div class="title">
 PHIẾU KIỂM TRA GẦM XE
 </div>
 
-</div>
 
 
 <div class="info">
 
-Biển số: <input>
+Biển số:
+<input>
+
 &nbsp;&nbsp;
 
-Hãng xe: <input>
+Hãng xe:
+<input>
+
 &nbsp;&nbsp;
 
-Năm sản xuất: <input>
+Năm sản xuất:
+<input>
+
 <br><br>
 
-KM hiện tại: <input>
+KM hiện tại:
+<input>
+
 &nbsp;&nbsp;
 
-Ngày kiểm tra: <input type="date">
+Ngày kiểm tra:
+<input type="date">
 
 </div>
 
@@ -199,26 +216,24 @@ Ngày kiểm tra: <input type="date">
 <table>
 
 <tr>
-<th>Hạng mục</th>
+<th style="width:40%">Hạng mục</th>
 <th class="ok">Bình thường</th>
 <th class="watch">Theo dõi</th>
 <th class="fix">Cần sửa</th>
-<th>Ghi chú</th>
+<th style="width:30%">Ghi chú</th>
 </tr>
 
 </table>
 
 
 
-<div class="section">YÊU CẦU KHÁCH HÀNG & CHẨN ĐOÁN BAN ĐẦU</div>
+<div class="section">YÊU CẦU KHÁCH HÀNG</div>
 
-<b>Yêu cầu của khách hàng:</b>
+<textarea placeholder="Mô tả các vấn đề khách hàng yêu cầu kiểm tra"></textarea>
 
-<textarea placeholder="Mô tả các vấn đề hoặc dịch vụ khách hàng yêu cầu"></textarea>
 
-<br><br>
 
-<b>Chẩn đoán ban đầu:</b>
+<div class="section">CHẨN ĐOÁN BAN ĐẦU</div>
 
 <textarea placeholder="Mô tả chẩn đoán ban đầu của kỹ thuật viên"></textarea>
 
@@ -228,35 +243,35 @@ Ngày kiểm tra: <input type="date">
 
 <table>
 
-<tr id="1">
+<tr>
 <td>1. Giảm xóc trước</td>
-<td class="center"><input type="radio" name="1" onclick="setStatus('1','ok')"></td>
-<td class="center"><input type="radio" name="1" onclick="setStatus('1','watch')"></td>
-<td class="center"><input type="radio" name="1" onclick="setStatus('1','fix')"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="2">
+<tr>
 <td>2. Giảm xóc sau</td>
-<td class="center"><input type="radio" name="2" onclick="setStatus('2','ok')"></td>
-<td class="center"><input type="radio" name="2" onclick="setStatus('2','watch')"></td>
-<td class="center"><input type="radio" name="2" onclick="setStatus('2','fix')"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="3">
+<tr>
 <td>3. Bát bèo / cao su chân giảm xóc</td>
-<td class="center"><input type="radio" name="3" onclick="setStatus('3','ok')"></td>
-<td class="center"><input type="radio" name="3" onclick="setStatus('3','watch')"></td>
-<td class="center"><input type="radio" name="3" onclick="setStatus('3','fix')"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="4">
+<tr>
 <td>4. Lò xo / thanh xoắn</td>
-<td class="center"><input type="radio" name="4" onclick="setStatus('4','ok')"></td>
-<td class="center"><input type="radio" name="4" onclick="setStatus('4','watch')"></td>
-<td class="center"><input type="radio" name="4" onclick="setStatus('4','fix')"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
@@ -268,27 +283,27 @@ Ngày kiểm tra: <input type="date">
 
 <table>
 
-<tr id="5">
+<tr>
 <td>5. Rotuyn lái trong</td>
-<td class="center"><input type="radio" name="5" onclick="setStatus('5','ok')"></td>
-<td class="center"><input type="radio" name="5" onclick="setStatus('5','watch')"></td>
-<td class="center"><input type="radio" name="5" onclick="setStatus('5','fix')"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="6">
-<td>6. Rotuyn trụ đứng</td>
-<td class="center"><input type="radio" name="6" onclick="setStatus('6','ok')"></td>
-<td class="center"><input type="radio" name="6" onclick="setStatus('6','watch')"></td>
-<td class="center"><input type="radio" name="6" onclick="setStatus('6','fix')"></td>
+<tr>
+<td>6. Rotuyn lái ngoài</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="7">
-<td>7. Rotuyn càng A</td>
-<td class="center"><input type="radio" name="7" onclick="setStatus('7','ok')"></td>
-<td class="center"><input type="radio" name="7" onclick="setStatus('7','watch')"></td>
-<td class="center"><input type="radio" name="7" onclick="setStatus('7','fix')"></td>
+<tr>
+<td>7. Rotuyn trụ đứng</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
@@ -296,35 +311,164 @@ Ngày kiểm tra: <input type="date">
 
 
 
-<div class="section">III. CÀNG A & CAO SU GẦM</div>
+<div class="section">III. CÀNG A</div>
 
 <table>
 
-<tr id="8"><td>8. Càng A trên</td>
-<td class="center"><input type="radio" name="8" onclick="setStatus('8','ok')"></td>
-<td class="center"><input type="radio" name="8" onclick="setStatus('8','watch')"></td>
-<td class="center"><input type="radio" name="8" onclick="setStatus('8','fix')"></td>
+<tr>
+<td>8. Càng A trên</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="9"><td>9. Càng A dưới</td>
-<td class="center"><input type="radio" name="9" onclick="setStatus('9','ok')"></td>
-<td class="center"><input type="radio" name="9" onclick="setStatus('9','watch')"></td>
-<td class="center"><input type="radio" name="9" onclick="setStatus('9','fix')"></td>
+<tr>
+<td>9. Càng A dưới</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
-<tr id="10"><td>10. Cao su càng A</td>
-<td class="center"><input type="radio" name="10" onclick="setStatus('10','ok')"></td>
-<td class="center"><input type="radio" name="10" onclick="setStatus('10','watch')"></td>
-<td class="center"><input type="radio" name="10" onclick="setStatus('10','fix')"></td>
+<tr>
+<td>10. Cao su càng A</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
 <td><textarea></textarea></td>
 </tr>
 
 </table>
+
+
+
+<div class="section">IV. THANH CÂN BẰNG</div>
+
+<table>
+
+<tr>
+<td>11. Rotuyn cân bằng</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr>
+<td>12. Thanh cân bằng</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">V. HỆ THỐNG LÁI</div>
+
+<table>
+
+<tr>
+<td>13. Thước lái</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr>
+<td>14. Trợ lực lái</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">VI. TRUYỀN ĐỘNG</div>
+
+<table>
+
+<tr>
+<td>15. Đầu láp</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr>
+<td>16. Cao su láp</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="section">VII. PHANH & KHUNG GẦM</div>
+
+<table>
+
+<tr>
+<td>17. Đĩa phanh</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr>
+<td>18. Má phanh</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+<tr>
+<td>19. Bu lông – ốc gầm</td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td class="center"><input type="checkbox"></td>
+<td><textarea></textarea></td>
+</tr>
+
+</table>
+
+
+
+<div class="signature">
+
+<div class="sign-box">
+
+<b>Kỹ thuật viên</b>
+
+<div class="sign-line">Ký và ghi rõ họ tên</div>
+
+</div>
+
+<div class="sign-box">
+
+<b>Khách hàng xác nhận</b>
+
+<div class="sign-line">Ký và ghi rõ họ tên</div>
+
+</div>
+
+</div>
+
 
 </div>
 
 </body>
-
 </html>
