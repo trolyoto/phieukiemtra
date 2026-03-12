@@ -301,3 +301,22 @@ width:40%;
 </tbody>
 
 </table>
+  <script>
+
+document.querySelectorAll(".dongia").forEach((input)=>{
+
+input.addEventListener("input",function(){
+
+let row=input.closest("tr");
+
+let sl=row.querySelector("input[type=number]").value;
+
+let price=input.value;
+
+row.querySelector(".thanhtien").innerText=sl*price;
+
+});
+
+});
+
+</script>
