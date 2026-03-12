@@ -1,120 +1,200 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Phiếu Kiểm Tra Gầm</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<head>
+
+<meta charset="UTF-8">
+<title>PHIẾU KIỂM TRA GẦM XE</title>
 
 <style>
 
-/* =============================== */
-/* FORM CHUNG */
-/* =============================== */
-
-body{
-font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
-background:#f3f4f6;
-padding:1rem;
-color:#212529;
--webkit-print-color-adjust:exact;
-print-color-adjust:exact;
-}
-
-/* Header bảng */
-
-.table-header-bg{
-background:#fde68a;
-}
-
-.checkbox-header-thay{
-background:#ef4444;
-color:white;
-}
-
-.checkbox-header-luuy{
-background:#facc15;
-color:black;
-}
-
-.checkbox-header-tot{
-background:#22c55e;
-color:white;
-}
-
-/* Section */
-
-.form-section-title{
-font-weight:700;
-border-bottom:1px solid #334155;
-padding-bottom:4px;
-margin-bottom:6px;
-font-size:16px;
-color:#1e293b;
-}
-
-/* Table */
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th,td{
-border:1px solid #444;
-padding:6px;
-font-size:13px;
-}
-
-th{
-text-align:center;
-font-weight:600;
-}
-
-textarea{
-width:100%;
-height:38px;
-border:1px dashed #999;
-font-size:12px;
-}
-
-/* SIGNATURE */
-
-.signature{
-display:flex;
-justify-content:space-between;
-margin-top:40px;
-}
-
-.sign-box{
-width:40%;
-text-align:center;
-}
-
-.sign-line{
-margin-top:60px;
-border-top:1px solid black;
-padding-top:4px;
-}
-
-/* PRINT */
+/* ===== A4 PRINT ===== */
 
 @page{
 size:A4;
 margin:12mm;
 }
 
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f2f2;
+margin:0;
+
+}
+
+.container{
+
+width:210mm;
+min-height:297mm;
+
+margin:auto;
+background:white;
+
+padding:18px;
+
+}
+
+/* TITLE */
+
+.title{
+
+text-align:center;
+font-size:22px;
+font-weight:700;
+
+margin-bottom:12px;
+
+}
+
+/* INFO */
+
+.info{
+
+font-size:13px;
+line-height:1.8;
+margin-bottom:10px;
+
+}
+
+.info input{
+
+border:none;
+border-bottom:1px dotted black;
+width:150px;
+
+}
+
+/* TABLE */
+
+table{
+
+width:100%;
+border-collapse:collapse;
+font-size:13px;
+
+}
+
+th,td{
+
+border:1px solid #444;
+padding:6px;
+
+}
+
+th{
+
+text-align:center;
+font-weight:600;
+
+}
+
+/* STATUS COLORS */
+
+.green{
+
+background:#22c55e;
+color:white;
+
+}
+
+.yellow{
+
+background:#facc15;
+
+}
+
+.red{
+
+background:#ef4444;
+color:white;
+
+}
+
+/* SECTION */
+
+.section{
+
+background:#1f497d;
+color:white;
+
+font-size:13px;
+font-weight:600;
+
+padding:6px;
+
+margin-top:12px;
+
+}
+
+/* INPUT */
+
+textarea{
+
+width:100%;
+height:35px;
+
+border:1px dashed #777;
+
+font-size:12px;
+
+}
+
+input[type=radio]{
+
+transform:scale(1.2);
+
+}
+
+/* SIGN */
+
+.signature{
+
+display:flex;
+justify-content:space-between;
+
+margin-top:45px;
+
+}
+
+.sign{
+
+width:40%;
+text-align:center;
+
+}
+
+.sign-line{
+
+margin-top:60px;
+border-top:1px solid black;
+
+}
+
+/* PRINT */
+
+.print{
+
+background:#2563eb;
+color:white;
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin-bottom:10px;
+
+}
+
 @media print{
 
-body{
-background:white;
-padding:0;
-}
+.print{display:none;}
 
-.no-print{
-display:none;
-}
+body{background:white;}
 
 }
 
@@ -122,38 +202,49 @@ display:none;
 
 </head>
 
-
-
 <body>
 
-<div class="max-w-[210mm] mx-auto bg-white p-5 shadow">
+<div class="container">
 
-<div class="text-center text-xl font-bold mb-3">
+<button class="print" onclick="window.print()">In Phiếu</button>
+
+<div class="title">
+
 PHIẾU KIỂM TRA GẦM XE
-</div>
-
-<div class="grid grid-cols-4 gap-2 text-sm mb-3">
-
-<div>Biển số: __________</div>
-<div>Hãng xe: __________</div>
-<div>Năm SX: __________</div>
-<div>KM hiện tại: __________</div>
-
-<div>Ngày kiểm tra: __________</div>
-<div>KTV: __________</div>
 
 </div>
+
+
+
+<div class="info">
+
+Biển số: <input>
+
+Hãng xe: <input>
+
+Năm SX: <input>
+
+<br>
+
+KM hiện tại: <input>
+
+Ngày kiểm tra: <input type="date">
+
+</div>
+
 
 
 <table>
 
-<tr class="table-header-bg">
+<tr>
 
-<th style="width:40%">Hạng mục</th>
+<th style="width:40%">Hạng mục kiểm tra</th>
 
-<th class="checkbox-header-tot">Bình thường</th>
-<th class="checkbox-header-luuy">Theo dõi</th>
-<th class="checkbox-header-thay">Cần sửa</th>
+<th class="green">Bình thường</th>
+
+<th class="yellow">Theo dõi</th>
+
+<th class="red">Cần sửa</th>
 
 <th style="width:35%">Ghi chú</th>
 
@@ -163,7 +254,7 @@ PHIẾU KIỂM TRA GẦM XE
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 YÊU CẦU KHÁCH HÀNG
 </div>
 
@@ -171,7 +262,7 @@ YÊU CẦU KHÁCH HÀNG
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 CHẨN ĐOÁN BAN ĐẦU
 </div>
 
@@ -179,7 +270,7 @@ CHẨN ĐOÁN BAN ĐẦU
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 I. HỆ THỐNG TREO
 </div>
 
@@ -221,7 +312,7 @@ I. HỆ THỐNG TREO
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 II. ROTUYN & KHỚP NỐI
 </div>
 
@@ -255,7 +346,7 @@ II. ROTUYN & KHỚP NỐI
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 III. CÀNG A
 </div>
 
@@ -289,7 +380,7 @@ III. CÀNG A
 
 
 
-<div class="form-section-title mt-3">
+<div class="section">
 IV. THANH CÂN BẰNG
 </div>
 
@@ -325,12 +416,12 @@ IV. THANH CÂN BẰNG
 
 <div class="signature">
 
-<div class="sign-box">
+<div class="sign">
 <b>Kỹ thuật viên</b>
 <div class="sign-line">Ký và ghi rõ họ tên</div>
 </div>
 
-<div class="sign-box">
+<div class="sign">
 <b>Khách hàng xác nhận</b>
 <div class="sign-line">Ký và ghi rõ họ tên</div>
 </div>
