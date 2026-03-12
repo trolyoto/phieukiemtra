@@ -7,7 +7,7 @@
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 background:#f4f6f8;
 padding:20px;
 }
@@ -33,88 +33,84 @@ margin-bottom:10px;
 }
 
 .row label{
-width:130px;
+width:150px;
 font-weight:bold;
 }
 
-.row input,textarea{
+.row input,
+.row textarea,
+.row select{
 flex:1;
 padding:6px;
 border:1px solid #ccc;
 border-radius:6px;
 }
 
+textarea{
+height:70px;
+}
+
 table{
 width:100%;
 border-collapse:collapse;
 margin-top:20px;
-font-size:13px;
 }
 
 th,td{
 border:1px solid #ccc;
-padding:6px;
+padding:8px;
 }
 
 th{
 font-weight:bold;
 }
 
-thead th:nth-child(1){background:#facc15;}
-thead th:nth-child(2){background:#fde68a;}
+thead th:nth-child(1){
+background:#facc15;
+}
 
-thead th:nth-child(6){
+thead th:nth-child(2){
+background:#fde68a;
+}
+
+thead th:nth-child(3){
 background:#ea580c;
 color:white;
 text-align:center;
 }
 
-thead th:nth-child(7){
+thead th:nth-child(4){
 background:#c7d2fe;
 text-align:center;
 }
 
-thead th:nth-child(8){
+thead th:nth-child(5){
 background:#22c55e;
 color:white;
 text-align:center;
 }
 
-.sl{
-width:40px;
-text-align:center;
-}
-
-.price{
-width:90px;
-text-align:center;
-}
-
-.totalcol{
-width:110px;
-text-align:center;
+td textarea{
+width:100%;
+border:1px solid #ccc;
+border-radius:6px;
+padding:5px;
+height:40px;
 }
 
 .checkbox{
 text-align:center;
 }
 
-textarea{
-height:40px;
-width:100%;
-}
-
 .sign{
-margin-top:40px;
+margin-top:50px;
 display:flex;
 justify-content:space-between;
 }
 
-.total{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-color:#e11d48;
+.sign div{
+text-align:center;
+width:40%;
 }
 
 </style>
@@ -164,8 +160,10 @@ color:#e11d48;
 <textarea></textarea>
 </div>
 
-<h3>Yêu cầu ban đầu của khách hàng</h3>
-<textarea style="height:70px"></textarea>
+
+<h3>1. Yêu cầu ban đầu của khách hàng</h3>
+
+<textarea style="width:100%;height:80px"></textarea>
 
 
 <table>
@@ -174,13 +172,8 @@ color:#e11d48;
 
 <tr>
 
-<th>Hạng mục kiểm tra</th>
+<th>Phần Gầm Trước</th>
 <th>Hiện trạng kiểm tra - khuyến nghị</th>
-
-<th class="sl">SL</th>
-<th class="price">Đơn giá</th>
-<th class="totalcol">Thành tiền</th>
-
 <th>Thay</th>
 <th>Lưu Ý</th>
 <th>Tốt</th>
@@ -189,135 +182,122 @@ color:#e11d48;
 
 </thead>
 
-<tbody id="tableBody"></tbody>
+<tbody>
 
-</table>
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">1. HỆ THỐNG TREO TRƯỚC</td></tr>
 
-<div class="total">
-Tổng báo giá: <span id="tong">0</span> VNĐ
-</div>
-
-<div class="sign">
-
-<div>
-<b>Khách hàng</b>
-<br><br><br><br>
-(Ký và ghi rõ họ tên)
-</div>
-
-<div>
-<b>Kỹ thuật viên</b>
-<br><br><br><br>
-(Ký và ghi rõ họ tên)
-</div>
-
-</div>
-
-</div>
+<tr><td>1. Giảm xóc trước</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>2. Lò xo trước</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>3. Bát bèo giảm xóc</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>4. Càng A trên</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>5. Càng A dưới</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
 
-<script>
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">2. ROTUYN & KHỚP LÁI</td></tr>
 
-const items=[
+<tr><td>6. Rotuyn lái trong</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>7. Rotuyn lái ngoài</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>8. Rotuyn càng A</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-["1. HỆ THỐNG TREO TRƯỚC",
-["1. Giảm xóc trước","2. Lò xo trước","3. Bát bèo giảm xóc","4. Càng A trên","5. Càng A dưới"]],
 
-["2. ROTUYN & KHỚP LÁI",
-["6. Rotuyn lái trong","7. Rotuyn lái ngoài","8. Rotuyn càng A"]],
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">3. THANH CÂN BẰNG</td></tr>
 
-["3. THANH CÂN BẰNG",
-["9. Rotuyn thanh cân bằng","10. Cao su thanh cân bằng","11. Thanh cân bằng"]],
+<tr><td>9. Rotuyn thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>10. Cao su thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>11. Thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-["4. HỆ THỐNG LÁI",
-["12. Thước lái","13. Khớp trục lái","14. Đường ống dầu trợ lực"]],
 
-["5. HỆ THỐNG TRUYỀN ĐỘNG",
-["15. Láp truyền động","16. Chụp bụi láp","17. Cát đăng láp"]],
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">4. HỆ THỐNG LÁI</td></tr>
 
-["6. HỆ THỐNG PHANH",
-["18. Đĩa phanh","19. Má phanh","20. Heo phanh","21. Đường ống dầu phanh"]],
+<tr><td>12. Thước lái</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>13. Khớp trục lái</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>14. Đường ống dầu trợ lực</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-["7. KHUNG GẦM",
-["22. Cao su gầm","23. Bu lông – ốc gầm","24. Khung phụ (Subframe)","25. Dây cáp phanh tay","26. Che gầm / bảo vệ gầm"]]
 
-];
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">5. HỆ THỐNG TRUYỀN ĐỘNG</td></tr>
 
-let html="";
+<tr><td>15. Láp truyền động</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>16. Chụp bụi láp</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>17. Cát đăng láp</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-items.forEach(group=>{
 
-html+=`<tr>
-<td colspan="8" style="background:#e5e7eb;font-weight:bold">${group[0]}</td>
-</tr>`;
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">6. HỆ THỐNG PHANH</td></tr>
 
-group[1].forEach(name=>{
+<tr><td>18. Đĩa phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>19. Má phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>20. Heo phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>21. Đường ống dầu phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-html+=`
 
-<tr>
+<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">7. KHUNG GẦM</td></tr>
 
-<td>${name}</td>
+<tr><td>22. Cao su gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>23. Bu lông – ốc gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>24. Khung phụ (Subframe)</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>25. Dây cáp phanh tay</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr><td>26. Che gầm / bảo vệ gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
-<td><textarea></textarea></td>
+</tbody>
+<h3>BẢNG BÁO GIÁ SỬA CHỮA</h3>
 
-<td class="sl">
-<input type="number" value="1" style="width:35px">
-</td>
+<table style="width:100%;border-collapse:collapse;font-size:14px">
 
-<td class="price">
-<input type="number" class="dongia">
-</td>
+<thead>
 
-<td class="totalcol thanhtien">0</td>
+<tr style="background:#0f3d6e;color:white">
 
-<td class="checkbox"><input type="checkbox"></td>
+<th style="border:1px solid black">STT</th>
 
-<td class="checkbox"><input type="checkbox"></td>
+<th style="border:1px solid black">HẠNG MỤC DV/VẬT TƯ</th>
 
-<td class="checkbox"><input type="checkbox"></td>
+<th style="border:1px solid black">DIỄN GIẢI</th>
+
+<th style="border:1px solid black">SL</th>
+
+<th style="border:1px solid black">ĐƠN GIÁ</th>
+
+<th style="border:1px solid black">THÀNH TIỀN</th>
+
+<th style="border:1px solid black">XÁC NHẬN</th>
+
+<th style="border:1px solid black">TRẠNG THÁI</th>
 
 </tr>
 
-`;
+</thead>
 
-});
+<tbody>
 
-});
+<tr>
 
-document.getElementById("tableBody").innerHTML=html;
+<td>1</td>
 
+<td><input style="width:100%"></td>
 
+<td><input style="width:100%"></td>
 
-document.addEventListener("input",function(){
+<td><input type="number" value="1" style="width:60px"></td>
 
-let tong=0;
+<td><input type="number" class="dongia"></td>
 
-document.querySelectorAll("tbody tr").forEach(row=>{
+<td class="thanhtien">0</td>
 
-let sl=row.querySelector("input[type=number]");
+<td><input type="checkbox"></td>
 
-let gia=row.querySelector(".dongia");
+<td>
 
-let total=row.querySelector(".thanhtien");
+<select>
 
-if(sl && gia && total){
+<option>Chờ KH</option>
+<option>Đồng ý</option>
+<option>Từ chối</option>
 
-let value=sl.value*gia.value;
+</select>
 
-total.innerText=value;
+</td>
 
-tong+=value;
+</tr>
 
-}
+</tbody>
 
-});
-
-document.getElementById("tong").innerText=tong.toLocaleString();
-
-});
-
-</script>
-
-</body>
-</html>
+</table>
