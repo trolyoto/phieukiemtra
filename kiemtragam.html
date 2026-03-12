@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 <meta charset="UTF-8">
 <title>Phiếu Kiểm Tra Gầm</title>
@@ -7,7 +8,7 @@
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 background:#f4f6f8;
 padding:20px;
 }
@@ -38,8 +39,7 @@ font-weight:bold;
 }
 
 .row input,
-.row textarea,
-.row select{
+.row textarea{
 flex:1;
 padding:6px;
 border:1px solid #ccc;
@@ -47,13 +47,14 @@ border-radius:6px;
 }
 
 textarea{
-height:70px;
+height:60px;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
 margin-top:20px;
+font-size:14px;
 }
 
 th,td{
@@ -65,41 +66,31 @@ th{
 font-weight:bold;
 }
 
-thead th:nth-child(1){
-background:#facc15;
-}
+.header1{background:#facc15;}
+.header2{background:#fde68a;}
+.header3{background:#ea580c;color:white;text-align:center;}
+.header4{background:#c7d2fe;text-align:center;}
+.header5{background:#22c55e;color:white;text-align:center;}
 
-thead th:nth-child(2){
-background:#fde68a;
-}
+.price1{background:#cfd7ea;text-align:center;}
+.price2{background:#27ae60;color:white;text-align:center;}
+.price3{background:#163a63;color:white;text-align:center;}
 
-thead th:nth-child(3){
-background:#ea580c;
-color:white;
-text-align:center;
-}
-
-thead th:nth-child(4){
-background:#c7d2fe;
-text-align:center;
-}
-
-thead th:nth-child(5){
-background:#22c55e;
-color:white;
-text-align:center;
-}
-
-td textarea{
+textarea{
 width:100%;
-border:1px solid #ccc;
-border-radius:6px;
-padding:5px;
 height:40px;
+border-radius:6px;
+border:1px solid #ccc;
+padding:5px;
 }
 
 .checkbox{
 text-align:center;
+}
+
+.section{
+background:#e5e7eb;
+font-weight:bold;
 }
 
 .sign{
@@ -113,15 +104,22 @@ text-align:center;
 width:40%;
 }
 
+input[type=number]{
+width:60px;
+padding:4px;
+}
+
 </style>
 
 </head>
+
 
 <body>
 
 <div class="container">
 
 <h1>PHIẾU KIỂM TRA GẦM</h1>
+
 
 <div class="row">
 <label>Ngày nhận xe</label>
@@ -166,51 +164,37 @@ width:40%;
 <textarea style="width:100%;height:80px"></textarea>
 
 
+
 <table>
 
 <thead>
+
 <tr>
 
-<th style="background:#f1c40f">HẠNG MỤC</th>
+<th class="header1">HẠNG MỤC</th>
+<th class="header2">HIỆN TRẠNG KIỂM TRA</th>
 
-<th style="background:#ffe08a">
-HIỆN TRẠNG KIỂM TRA - KHUYẾN NGHỊ
-</th>
+<th class="header3">THAY</th>
+<th class="header4">LƯU Ý</th>
+<th class="header5">TỐT</th>
 
-<th style="background:#ff6b00;color:white">
-THAY
-</th>
-
-<th style="background:#b8c4dd">
-LƯU Ý
-</th>
-
-<th style="background:#2ecc71;color:white">
-TỐT
-</th>
-
-<th style="background:#cfd7ea;width:60px">
-SL
-</th>
-
-<th style="background:#27ae60;color:white;width:120px">
-ĐƠN GIÁ
-</th>
-
-<th style="background:#163a63;color:white;width:120px">
-THÀNH TIỀN
-</th>
-
-<th style="background:#163a63;color:white;width:90px">
-XÁC NHẬN
-</th>
+<th class="price1">SL</th>
+<th class="price2">ĐƠN GIÁ</th>
+<th class="price3">THÀNH TIỀN</th>
+<th class="price3">XÁC NHẬN</th>
 
 </tr>
+
 </thead>
+
 
 <tbody>
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">1. HỆ THỐNG TREO TRƯỚC</td></tr>
+
+<tr class="section">
+<td colspan="9">1. HỆ THỐNG TREO TRƯỚC</td>
+</tr>
+
 
 <tr>
 
@@ -218,77 +202,120 @@ XÁC NHẬN
 
 <td><textarea></textarea></td>
 
-<td>
-<input type="number" value="1" style="width:40px">
-</td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
 
-<td>
-<input type="number" placeholder="VNĐ" style="width:100px">
-</td>
+<td><input type="number" value="1" class="sl"></td>
 
-<td><input type="checkbox"></td>
+<td><input type="number" class="dongia"></td>
 
-<td><input type="checkbox"></td>
+<td class="thanhtien">0</td>
 
-<td><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
 
 </tr>
-<tr><td>2. Lò xo trước</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>3. Bát bèo giảm xóc</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>4. Càng A trên</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>5. Càng A dưới</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
 
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">2. ROTUYN & KHỚP LÁI</td></tr>
 
-<tr><td>6. Rotuyn lái trong</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>7. Rotuyn lái ngoài</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>8. Rotuyn càng A</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<tr>
 
+<td>2. Lò xo trước</td>
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">3. THANH CÂN BẰNG</td></tr>
+<td><textarea></textarea></td>
 
-<tr><td>9. Rotuyn thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>10. Cao su thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>11. Thanh cân bằng</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
 
+<td><input type="number" value="1" class="sl"></td>
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">4. HỆ THỐNG LÁI</td></tr>
+<td><input type="number" class="dongia"></td>
 
-<tr><td>12. Thước lái</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>13. Khớp trục lái</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>14. Đường ống dầu trợ lực</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<td class="thanhtien">0</td>
 
+<td class="checkbox"><input type="checkbox"></td>
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">5. HỆ THỐNG TRUYỀN ĐỘNG</td></tr>
-
-<tr><td>15. Láp truyền động</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>16. Chụp bụi láp</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>17. Cát đăng láp</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+</tr>
 
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">6. HỆ THỐNG PHANH</td></tr>
+<tr>
 
-<tr><td>18. Đĩa phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>19. Má phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>20. Heo phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>21. Đường ống dầu phanh</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<td>3. Bát bèo giảm xóc</td>
+
+<td><textarea></textarea></td>
+
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+
+<td><input type="number" value="1" class="sl"></td>
+
+<td><input type="number" class="dongia"></td>
+
+<td class="thanhtien">0</td>
+
+<td class="checkbox"><input type="checkbox"></td>
+
+</tr>
 
 
-<tr><td colspan="5" style="background:#e5e7eb;font-weight:bold">7. KHUNG GẦM</td></tr>
+<tr>
 
-<tr><td>22. Cao su gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>23. Bu lông – ốc gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>24. Khung phụ (Subframe)</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>25. Dây cáp phanh tay</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
-<tr><td>26. Che gầm / bảo vệ gầm</td><td><textarea></textarea></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td><td class="checkbox"><input type="checkbox"></td></tr>
+<td>4. Càng A trên</td>
 
-</script>
+<td><textarea></textarea></td>
+
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+
+<td><input type="number" value="1" class="sl"></td>
+
+<td><input type="number" class="dongia"></td>
+
+<td class="thanhtien">0</td>
+
+<td class="checkbox"><input type="checkbox"></td>
+
+</tr>
+
+
+<tr>
+
+<td>5. Càng A dưới</td>
+
+<td><textarea></textarea></td>
+
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+<td class="checkbox"><input type="checkbox"></td>
+
+<td><input type="number" value="1" class="sl"></td>
+
+<td><input type="number" class="dongia"></td>
+
+<td class="thanhtien">0</td>
+
+<td class="checkbox"><input type="checkbox"></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+
+
+<div class="sign">
+
 <div>
 <b>Khách hàng</b>
 <br><br><br>
 (Ký và ghi rõ họ tên)
 </div>
+
 
 <div>
 <b>Kỹ thuật viên</b>
@@ -298,7 +325,9 @@ XÁC NHẬN
 
 </div>
 
+
 </div>
+
 
 
 <script>
@@ -307,19 +336,20 @@ document.querySelectorAll(".dongia").forEach((input)=>{
 
 input.addEventListener("input",function(){
 
-let row=input.closest("tr");
+let row=input.closest("tr")
 
-let sl=row.querySelector("input[type=number]").value;
+let sl=row.querySelector(".sl").value
 
-let gia=input.value;
+let gia=input.value
 
-row.querySelector(".thanhtien").innerText=sl*gia;
+row.querySelector(".thanhtien").innerText=sl*gia
 
-});
+})
 
-});
+})
 
 </script>
+
 
 </body>
 </html>
