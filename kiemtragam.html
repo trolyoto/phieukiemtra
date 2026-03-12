@@ -368,5 +368,38 @@ document.addEventListener("input",tinhTien)
 
 </script>
 
-</body>
+</body><script>
+
+function formatMoney(n){
+return Number(n).toLocaleString("vi-VN");
+}
+
+function tinhTien(){
+
+let tong = 0;
+
+document.querySelectorAll("tbody tr").forEach(row=>{
+
+let sl = row.querySelector(".sl");
+let gia = row.querySelector(".dongia");
+
+if(sl && gia){
+
+let tt = sl.value * gia.value;
+
+row.querySelector(".thanhtien").innerText = formatMoney(tt);
+
+tong += tt;
+
+}
+
+});
+
+document.getElementById("tong").innerText = formatMoney(tong);
+
+}
+
+document.addEventListener("input",tinhTien);
+
+</script>
 </html>
